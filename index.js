@@ -170,7 +170,7 @@ const addIntern = () => {
 
 function buildTeam () {
     fs.writeFile('team.html', generateHtml(teamList), (err) => {
-        err ? console.log(err) : console.log("Your HTML file of team members had been generated!");
+        err ? console.log(chalk.redBright(err)) : console.log(chalk.cyan("Your HTML file of team members had been generated!"));
     })
 }
 
