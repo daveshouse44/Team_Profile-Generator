@@ -15,33 +15,27 @@ const teamList = [];
 
 // Valdiation functions
 const validateName = answer => {
-    const pass = answer.match(
-      /^[a-zA-Z]+$/
-    );
+    const pass = answer.match(/^[a-zA-Z]+$/);
     if (pass) {
       return true;
     }
-    return "Enter valid name";
+    return (chalk.redBright("Enter valid name"));
   };
 
   const validateNum = answer => {
-    const pass = answer.match(
-      '^[0-9]+$'
-    );
+    const pass = answer.match('^[0-9]+$');
     if (pass) {
       return true;
     }
-    return "Must be a number";
+    return (chalk.redBright("Must be a number"));
   };
 
   const validateEmail = answer => {
-    const pass = answer.match(
-      /\S+@\S+\.\S+/
-    );
+    const pass = answer.match(/\S+@\S+\.\S+/);
     if (pass) {
       return true;
     }
-    return "Enter valid email address.";
+    return (chalk.redBright("Enter valid email address."));
   };
 
 // initiate program
@@ -50,25 +44,25 @@ const init = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'What is the manager name?',
+            message: (chalk.red('What is the manager name?')),
             validate: validateName,
         },
         {
             type: 'input',
             name: 'id',
-            message: 'What is the manager ID number?',
+            message: (chalk.red('What is the manager ID number?')),
             validate: validateNum,
         },
         {
             type: 'input',
             name: 'email',
-            message: 'What is the manager email?',
+            message: (chalk.red('What is the manager email?')),
             validate: validateEmail,
         },
         {
             type: 'input',
             name: 'officeNum',
-            message: 'What is the manager office number?',
+            message: (chalk.red('What is the manager office number?')),
             validate: validateNum,
         },
     ])
@@ -84,15 +78,15 @@ const addNewTeamMember = () => {
         {
             type: 'list',
             name: 'teamMember',
-            message: 'Select an option below next',
-            choices: ['Engineer', 'Intern', 'Done adding team members'],
+            message: (chalk.yellow('Select an option below next')),
+            choices: [(chalk.blue('Engineer')), (chalk.green('Intern')), (chalk.yellow('Done adding team members'))],
         },
     ])
     .then((data) => {
-        if (data.teamMember === 'Engineer') {
+        if (data.teamMember === (chalk.blue('Engineer'))) {
             addEngineer ();
         }
-        else if (data.teamMember === 'Intern') {
+        else if (data.teamMember === (chalk.green('Intern'))) {
             addIntern ();
         }
         else {
@@ -108,25 +102,25 @@ const addEngineer = () => {
         {
             type: 'input',
             name: 'name',
-        message: `What is the engineer name?`,
+        message: (chalk.blue(`What is the engineer name?`)),
         validate: validateName,
     },
     {
         type: 'input',
         name: 'id',
-        message: `What is the engineer ID number?`,
+        message: (chalk.blue(`What is the engineer ID number?`)),
         validate: validateNum,
     },
     {
         type: 'input',
         name: 'email',
-        message: `What is the engineer email?`,
+        message: (chalk.blue(`What is the engineer email?`)),
         validate: validateEmail,
     },
     {
         type: 'input',
         name: 'github',
-        message: `What is your engineer GitHub username?`
+        message: (chalk.blue(`What is your engineer GitHub username?`))
         },
     ]).then ((data) => {
         let engineer = new Engineer (data.name, data.id, data.email, data.github);
@@ -141,25 +135,25 @@ const addIntern = () => {
         {
             type: 'input',
             name: 'name',
-        message: `What is the intern name?`,
+        message: (chalk.green(`What is the intern name?`)),
         validate: validateName,
     },
     {
         type: 'input',
         name: 'id',
-        message: `What is the intern ID number?`,
+        message:(chalk.green( `What is the intern ID number?`)),
         validate: validateNum,
     },
     {
         type: 'input',
         name: 'email',
-        message: `What is the intern email?`,
+        message: (chalk.green(`What is the intern email?`)),
         validate: validateEmail,
     },
     {
         type: 'input',
         name: 'school',
-        message: `What is the intern's school?`
+        message: (chalk.green(`What is the intern's school?`))
         },
     ]).then ((data) => {
         let intern = new Intern (data.name, data.id, data.email, data.school);

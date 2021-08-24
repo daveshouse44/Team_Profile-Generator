@@ -7,4 +7,10 @@
 // Generates HTML
 function generateHtml(data) {
     console.log('This is in generateHtml', data);
+    return
+    
 }
+
+
+
+module.exports - generateHtml;
