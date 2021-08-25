@@ -3,12 +3,11 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const chalk = require('chalk');
 
-const Employee = require('./lib/employee.js');
 const Manager = require('./lib/manager.js');
 const Engineer = require('./lib/engineer.js');
 const Intern = require('./lib/intern.js');
 
-const generateHtml = require('./dist/generateHtml');
+const generateHtml = require('./src/generatehtml.js');
 
 // Other references needed
 const teamList = [];
@@ -90,6 +89,7 @@ const addNewTeamMember = () => {
             addIntern ();
         }
         else {
+            console.log(chalk.blueBright.bold('Your team profile has been generated!'));
             buildTeam();
         }
     });
@@ -163,10 +163,12 @@ const addIntern = () => {
 };
 
 function buildTeam () {
-    fs.writeFile('team.html', generateHtml(teamList), (err) => {
+    console.log(teamList);
+    fs.writeFile('./dist/index.html', generateHtml(teamList), (err) => {
         err ? console.log(chalk.redBright(err)) : console.log(chalk.cyan("Your HTML file of team members had been generated!"));
     })
 }
 
 // Function to initialize app
 init();
+
