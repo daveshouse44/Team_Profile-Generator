@@ -37,7 +37,7 @@ const validateName = answer => {
     return (chalk.redBright("Enter valid email address."));
   };
 
-// initiate program
+// initiate program questions
 const init = () => {
     inquirer.prompt ([
         {
@@ -72,6 +72,7 @@ const init = () => {
     });
 }
 
+// Question loop to add more TeamMembers
 const addNewTeamMember = () => {
     inquirer.prompt ([
         {
@@ -162,8 +163,8 @@ const addIntern = () => {
     })
 };
 
+// Function to write new index.html file with response data
 function buildTeam () {
-    console.log(teamList);
     fs.writeFile('./dist/index.html', generateHtml(teamList), (err) => {
         err ? console.log(chalk.redBright(err)) : console.log(chalk.cyan("Your HTML file of team members had been generated!"));
     })
