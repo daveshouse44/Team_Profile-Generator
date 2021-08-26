@@ -39,4 +39,4 @@ describe('Employee', ()=>{
         const newEmployee = new Employee();
         expect(newEmployee.getRole()).toBe("Employee");
     })
-})
+});

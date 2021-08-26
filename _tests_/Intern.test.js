@@ -1,4 +1,3 @@
-const { italic } = require('chalk');
 const Intern = require('../lib/intern');
 
 describe ('Intern', ()=>{
